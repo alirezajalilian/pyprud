@@ -1,1 +1,2 @@
 # pyprud
+Baloot Product module
