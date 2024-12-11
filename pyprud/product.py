@@ -201,3 +201,51 @@ class Product:
 
     def delete_group_sync(self, group_id: str) -> dict | None:
         return asyncio_run(self.delete_group_async(group_id=group_id))
+
+    # Custom Field Value endpoints
+    async def create_custom_field_value_async(self, data: dict) -> dict | None:
+        return await self.request(
+            url=f"{self.BASE_URL}/customFieldValue",
+            method=Product.RequestMethod.POST.value,
+            data=data,
+        )
+
+    def create_custom_field_value_sync(self, data: dict) -> dict | None:
+        return asyncio_run(self.create_custom_field_value_async(data=data))
+
+    async def list_custom_field_values_async(self) -> dict | None:
+        return await self.request(
+            url=f"{self.BASE_URL}/customFieldValue",
+            method=Product.RequestMethod.GET.value,
+        )
+
+    def list_custom_field_values_sync(self) -> dict | None:
+        return asyncio_run(self.list_custom_field_values_async())
+
+    async def get_custom_field_value_async(self, value_id: str) -> dict | None:
+        return await self.request(
+            url=f"{self.BASE_URL}/customFieldValue/{value_id}",
+            method=Product.RequestMethod.GET.value,
+        )
+
+    def get_custom_field_value_sync(self, value_id: str) -> dict | None:
+        return asyncio_run(self.get_custom_field_value_async(value_id=value_id))
+
+    async def update_custom_field_value_async(self, value_id: str, data: dict) -> dict | None:
+        return await self.request(
+            url=f"{self.BASE_URL}/customFieldValue/{value_id}",
+            method=Product.RequestMethod.PUT.value,
+            data=data,
+        )
+
+    def update_custom_field_value_sync(self, value_id: str, data: dict) -> dict | None:
+        return asyncio_run(self.update_custom_field_value_async(value_id=value_id, data=data))
+
+    async def delete_custom_field_value_async(self, value_id: str) -> dict | None:
+        return await self.request(
+            url=f"{self.BASE_URL}/customFieldValue/{value_id}",
+            method=Product.RequestMethod.DELETE.value,
+        )
+
+    def delete_custom_field_value_sync(self, value_id: str) -> dict | None:
+        return asyncio_run(self.delete_custom_field_value_async(value_id=value_id))
